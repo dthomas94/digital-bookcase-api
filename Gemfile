@@ -27,18 +27,18 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-gem "bcrypt", "~> 3.1.7"
+# Devise
+gem "devise"
 
 # GraphQL
-gem 'graphql'
+gem "graphql"
 
 group :development do
-  gem 'graphiql-rails'
+  gem "graphiql-rails"
 end
 
 # Asset stuff
-gem 'sprockets-rails'
+gem "sprockets-rails"
 
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
