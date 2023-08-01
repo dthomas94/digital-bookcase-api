@@ -29,6 +29,8 @@ gem "bootsnap", require: false
 
 # Devise
 gem "devise"
+gem "devise-jwt"
+gem "jsonapi-serializer"
 
 # GraphQL
 gem "graphql"
