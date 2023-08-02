@@ -14,7 +14,7 @@ class Users::SessionsController < Devise::SessionsController
     else
       render json: {
         status: 401,
-        message: "Couldn't find user."
+        message: "Invalid email/password"
       }, status: :unauthorized
     end
   end
