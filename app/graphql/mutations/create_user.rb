@@ -3,18 +3,16 @@ module Mutations
     argument :name, String, required: true
     argument :credentials, Types::AuthProviderCredentialsInput, required: true
 
-    type Types::UserType
-
-    def on_jwt_dispatch(token) 
-      context[:session][:token] = "Bearer #{token}"
-    end
+    field :user, Types::UserType, null: true
 
     def resolve(name: nil, credentials: nil)
-      User.create!(
+      user = User.create!(
         name: name,
         email: credentials&.[](:email),
         password: credentials&.[](:password)
       )
+
+      {user: user}
     end
   end
 end

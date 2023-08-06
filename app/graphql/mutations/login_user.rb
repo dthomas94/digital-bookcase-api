@@ -1,13 +1,8 @@
 module Mutations
   class LoginUser < BaseMutation
-    argument :credentials, Types::AuthProviderCredentialsInput, required: false
+    argument :credentials, Types::AuthProviderCredentialsInput, required: true
 
     field :user, Types::UserType, null: true
-
-    # def on_jwt_dispatch(token)
-    #   context[:session][:token] = token
-
-    # end
 
     def resolve(credentials: nil)
       return unless credentials
@@ -18,9 +13,9 @@ module Mutations
 
 
       if user.valid_password?(credentials[:password])
-        context[:session][:token] = JWT.encode({email: credentials[:email], password: credentials[:password]}, Rails.application.credentials.devise_jwt_secret_key!).first
-        puts context[:session][:token]
-        {user: user}
+        current_user = user
+        puts current_user
+        {user: current_user}
       else
         raise GraphQL::ExecutionError.new("Invalid email/password", extensions: {code: 'AUTHENTICATION_ERROR'})
       end
