@@ -1,0 +1,2 @@
+class OpenLibraryWork < ApplicationRecord
+end

@@ -7,5 +7,10 @@ module Types
     def current_user
       context[:current_user]
     end
+
+    def work
+      self
+    end
+
   end
 end

@@ -9,5 +9,11 @@ module Types
     def current_user
       context[:current_user]
     end
+
+    field :open_library_works, [Types::OpenLibraryWorkType], null: false,
+      description: "Return a list of works"
+    def open_library_works
+      OpenLibraryWorks.all
+    end
   end
 end

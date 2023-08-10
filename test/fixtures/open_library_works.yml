@@ -1,0 +1,55 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  key: MyString
+  type: 
+  title: MyString
+  title_suggest: MyString
+  title_sort: MyString
+  edition_count: 1
+  first_publish_year: 1
+  number_of_pages_media: 1
+  last_modified_i: 1
+  ebook_count_i: 1
+  ebook_access: MyString
+  has_fulltext: false
+  ublic_scan_b: false
+  _version_: 1
+  author_facet: MyString
+  publisher_facet: MyString
+  author_name: MyString
+  author_key: MyString
+  language: MyString
+  publisher: MyString
+  isbn: MyString
+  publish_year: 1
+  publish_date: MyString
+  edition_key: MyString
+  seed: MyString
+
+two:
+  key: MyString
+  type: 
+  title: MyString
+  title_suggest: MyString
+  title_sort: MyString
+  edition_count: 1
+  first_publish_year: 1
+  number_of_pages_media: 1
+  last_modified_i: 1
+  ebook_count_i: 1
+  ebook_access: MyString
+  has_fulltext: false
+  ublic_scan_b: false
+  _version_: 1
+  author_facet: MyString
+  publisher_facet: MyString
+  author_name: MyString
+  author_key: MyString
+  language: MyString
+  publisher: MyString
+  isbn: MyString
+  publish_year: 1
+  publish_date: MyString
+  edition_key: MyString
+  seed: MyString
