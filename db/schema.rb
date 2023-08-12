@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_10_233047) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_12_183830) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookcases", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name", null: false
+    t.string "work_ids", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bookcases_on_user_id", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -30,12 +39,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_233047) do
   end
 
   create_table "works", primary_key: "key", id: :text, force: :cascade do |t|
-    t.text "type", null: false
+    t.text "type"
     t.integer "revision"
-    t.date "last_modified", null: false
-    t.jsonb "data", null: false
+    t.date "last_modified"
+    t.jsonb "data"
     t.index ["data"], name: "ix_works_data", opclass: :jsonb_path_ops, using: :gin
     t.index ["key"], name: "cuix_works_key", unique: true
   end
 
+  add_foreign_key "bookcases", "users"
 end
