@@ -1,2 +1,0 @@
-class OpenLibraryWork < ApplicationRecord
-end

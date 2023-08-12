@@ -30,10 +30,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_233047) do
   end
 
   create_table "works", primary_key: "key", id: :text, force: :cascade do |t|
-    t.text "type"
+    t.text "type", null: false
     t.integer "revision"
-    t.date "last_modified"
-    t.jsonb "data"
+    t.date "last_modified", null: false
+    t.jsonb "data", null: false
     t.index ["data"], name: "ix_works_data", opclass: :jsonb_path_ops, using: :gin
     t.index ["key"], name: "cuix_works_key", unique: true
   end

@@ -57,35 +57,6 @@ input OPEN_LIBRARY_WORK_INPUT {
   type: String!
 }
 
-type OpenLibraryWork {
-  _version: Int
-  authorFacet: [String!]
-  authorKey: [String!]!
-  authorName: [String!]!
-  ebookAccess: String
-  ebookCountI: Int
-  editionCount: Int!
-  editionKey: [String!]!
-  firstPublishYear: Int!
-  hasFulltext: Boolean!
-  id: ID!
-  isbn: [String!]!
-  key: String!
-  language: [String!]!
-  lastModifiedI: Int
-  numberOfPagesMedian: Int!
-  publicScanB: Boolean!
-  publishDate: [String!]!
-  publishYear: [Int!]!
-  publisher: [String!]!
-  publisherFacet: [String!]
-  seed: [String!]
-  title: String!
-  titleSort: String
-  titleSuggest: String
-  type: String!
-}
-
 type Query {
   """
   The current logged in user
@@ -95,11 +66,53 @@ type Query {
   """
   Return a list of works
   """
-  openLibraryWorks: [OpenLibraryWork!]!
+  works: [Work!]
 }
 
 type User {
   email: String!
   id: ID!
   name: String!
+}
+
+type Work {
+  data: WorkData!
+
+  """
+  openlibrary ref string /authors/OL3964940A
+  """
+  key: String!
+
+  """
+  date 2010-04-28
+  """
+  lastModified: String!
+  revision: Int!
+  type: String!
+}
+
+type WorkData {
+  """
+  array of openlibrary ref strings ['/authors/OL3964940A',...]
+  """
+  authors: [String!]
+  covers: [Int!]
+
+  """
+  datetime 2009-12-11T01:57:19.964652
+  """
+  created: String
+
+  """
+  openlibrary ref string /authors/OL3964940A
+  """
+  key: String
+
+  """
+  datetime 2009-12-11T01:57:19.964652
+  """
+  lastModified: String
+  latestRevision: Int
+  revision: Int
+  title: String
 }

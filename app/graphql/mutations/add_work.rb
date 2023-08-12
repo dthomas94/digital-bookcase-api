@@ -9,7 +9,7 @@ module Mutations
 
     # TODO: define resolve method
     def resolve(open_library_work: nil)
-      work = OpenLibraryWork.create!(open_library_work)
+      work = Work.create!(open_library_work)
       { work: work }
     end
   end
