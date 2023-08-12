@@ -8,10 +8,11 @@ module Mutations
     def resolve(input)
       bookcase = Bookcase.find_by(user_id: input[:user_id])
 
-      if bookcase
+      if bookcase && !bookcase.work_keys.include?(input[:work_key])
         bookcase.update!(work_keys: bookcase.work_keys.push(input[:work_key]))
-        {bookcase: bookcase}
       end
+
+      {bookcase: bookcase}
     end
   end
 end

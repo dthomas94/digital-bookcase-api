@@ -10,10 +10,17 @@ module Types
       context[:current_user]
     end
 
-    field :works, [Types::WorkType], null: true,
-      description: "Return a list of works"
-    def works
-      Work.all
+    field :works, [Types::WorkType], null: false do
+      argument :title, String, required: false,
+      description: "A list of all works, option to filter by title"
+    end
+    
+    def works(title: nil)
+      if title
+        Work.where("data ->> 'title' like ?", "%#{title}%").limit(100)
+      else
+        Work.all.limit(100)
+      end
     end
   end
 end

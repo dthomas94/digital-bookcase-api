@@ -85,11 +85,12 @@ type Query {
   The current logged in user
   """
   currentUser: User
-
-  """
-  Return a list of works
-  """
-  works: [Work!]
+  works(
+    """
+    A list of all works, option to filter by title
+    """
+    title: String
+  ): [Work!]!
 }
 
 type User {
@@ -111,7 +112,6 @@ type Work {
   """
   lastModified: String!
   revision: Int!
-  type: String!
 }
 
 type WorkData {
