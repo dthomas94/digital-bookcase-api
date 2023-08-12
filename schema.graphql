@@ -95,24 +95,28 @@ type WorkData {
   """
   array of openlibrary ref strings ['/authors/OL3964940A',...]
   """
-  authors: [String!]
+  authors: [String!]!
+
+  """
+  array of cover identifiers for openlibrary
+  """
   covers: [Int!]
 
   """
   datetime 2009-12-11T01:57:19.964652
   """
-  created: String
+  created: String!
 
   """
   openlibrary ref string /authors/OL3964940A
   """
-  key: String
+  key: String!
 
   """
   datetime 2009-12-11T01:57:19.964652
   """
-  lastModified: String
-  latestRevision: Int
-  revision: Int
-  title: String
+  lastModified: String!
+  latestRevision: Int!
+  revision: Int!
+  title: String!
 }
