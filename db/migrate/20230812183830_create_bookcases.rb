@@ -5,7 +5,7 @@ class CreateBookcases < ActiveRecord::Migration[7.0]
       
 
       t.string :name, null: false
-      t.string :work_ids, array: true, :default => []
+      t.string :work_keys, array: true
 
       t.timestamps
     end

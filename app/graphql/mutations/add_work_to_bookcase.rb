@@ -1,15 +1,15 @@
 module Mutations
   class AddWorkToBookcase < BaseMutation
-    argument :work_id, String, required: true
+    argument :work_key, String, required: true
     argument :user_id, Integer, required: true
     # TODO: define return fields
     field :bookcase, Types::BookcaseType, null: false
 
-    def resolve(work_id, user_id)
-      bookcase = Bookcase.find_by(user_id: user_id)
+    def resolve(input)
+      bookcase = Bookcase.find_by(user_id: input[:user_id])
 
       if bookcase
-        bookcase.update!(work_ids: bookcase.work_ids.concat(work_id))
+        bookcase.update!(work_keys: bookcase.work_keys.push(input[:work_key]))
         {bookcase: bookcase}
       end
     end

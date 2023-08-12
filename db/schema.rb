@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_12_183830) do
   create_table "bookcases", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", null: false
-    t.string "work_ids", default: [], array: true
+    t.string "work_keys", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_bookcases_on_user_id", unique: true
