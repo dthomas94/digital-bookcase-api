@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_12_224229) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_12_233155) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authors", primary_key: "key", id: :text, force: :cascade do |t|
+    t.integer "revision"
+    t.date "last_modified", null: false
+    t.jsonb "data", null: false
+    t.index ["data"], name: "ix_authors_data", opclass: :jsonb_path_ops, using: :gin
+    t.index ["key"], name: "cuix_authors_key", unique: true
+  end
 
   create_table "bookcases", force: :cascade do |t|
     t.bigint "user_id"
