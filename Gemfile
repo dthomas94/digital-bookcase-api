@@ -27,6 +27,9 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# https://github.com/composite-primary-keys/composite_primary_keys
+gem 'composite_primary_keys', '~> 14.0.6'
+
 # Devise
 gem "devise"
 gem "devise-jwt"

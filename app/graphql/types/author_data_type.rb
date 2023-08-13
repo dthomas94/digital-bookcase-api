@@ -10,7 +10,7 @@ module Types
         field :key, String
         field :photos, [String]
         field :alternate_names, [String]
-        field :links, {url: String, title: String}
+        field :links, [AuthorDataLinkType]
         field :uris, [String]
     end
 end

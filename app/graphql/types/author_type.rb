@@ -3,6 +3,6 @@ module Types
         field :key, String, null: false
         field :revision, Integer, null: false
         field :last_modified, String, null: false, description: "date"
-        field :data, Types::AuthorDataType, null: false
+        field :data, AuthorDataType, null: false
     end
 end

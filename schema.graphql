@@ -22,6 +22,37 @@ type AddWorkToBookcasePayload {
   clientMutationId: String
 }
 
+type Author {
+  data: AuthorData!
+  key: String!
+
+  """
+  date
+  """
+  lastModified: String!
+  revision: Int!
+}
+
+type AuthorData {
+  alternateNames: [String!]
+  bio: String
+  easternOrder: Boolean
+  enumeration: String
+  key: String
+  links: [AuthorDataLink!]
+  name: String!
+  personalName: String
+  photos: [String!]
+  sourceRecords: [String!]
+  title: String
+  uris: [String!]
+}
+
+type AuthorDataLink {
+  title: String
+  url: String
+}
+
 type Bookcase {
   id: String!
 
@@ -81,6 +112,13 @@ type Mutation {
 }
 
 type Query {
+  authors(
+    """
+    A list of all authors, option to filter by name
+    """
+    name: String
+  ): [Author!]!
+
   """
   The current logged in user
   """

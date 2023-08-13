@@ -22,5 +22,18 @@ module Types
         Work.all.limit(100)
       end
     end
+
+    field :authors, [Types::AuthorType], null: false do
+      argument :name, String, required: false,
+      description: "A list of all authors, option to filter by name"
+    end
+    
+    def authors(name: nil)
+      if name
+        Author.where("data ->> 'name' like ?", "%#{name}%").limit(100)
+      else
+        Author.all.limit(100)
+      end
+    end
   end
 end
