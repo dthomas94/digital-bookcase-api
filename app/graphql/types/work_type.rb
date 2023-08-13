@@ -9,7 +9,9 @@ module Types
 
         def authors
             foundAuthors = []
-            AuthorWork.where(work_key: object["key"]).find_each do |authorWork|
+            authorWorks = AuthorWork.where(work_key: object["key"]).all
+            
+            authorWorks.each do |authorWork|
                 if authorWork
                     foundAuthor = Author.find_by(key: authorWork[:author_key])
                     foundAuthors.push(foundAuthor)
