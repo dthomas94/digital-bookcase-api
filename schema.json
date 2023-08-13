@@ -156,13 +156,13 @@
             },
             {
               "name": "lastModified",
-              "description": "date",
+              "description": null,
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "ISO8601Date",
                   "ofType": null
                 }
               },
@@ -675,6 +675,26 @@
         },
         {
           "kind": "SCALAR",
+          "name": "ISO8601Date",
+          "description": "An ISO 8601-encoded date",
+          "interfaces": null,
+          "possibleTypes": null,
+          "fields": null,
+          "inputFields": null,
+          "enumValues": null
+        },
+        {
+          "kind": "SCALAR",
+          "name": "ISO8601DateTime",
+          "description": "An ISO 8601-encoded datetime",
+          "interfaces": null,
+          "possibleTypes": null,
+          "fields": null,
+          "inputFields": null,
+          "enumValues": null
+        },
+        {
+          "kind": "SCALAR",
           "name": "Int",
           "description": "Represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
           "interfaces": null,
@@ -942,6 +962,32 @@
           "possibleTypes": null,
           "fields": [
             {
+              "name": "authors",
+              "description": null,
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "OBJECT",
+                      "name": "Author",
+                      "ofType": null
+                    }
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null,
+              "args": [
+
+              ]
+            },
+            {
               "name": "data",
               "description": null,
               "type": {
@@ -961,7 +1007,7 @@
             },
             {
               "name": "key",
-              "description": "openlibrary ref string /authors/OL3964940A",
+              "description": "openlibrary ref string /works/OL10000000W",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -979,13 +1025,13 @@
             },
             {
               "name": "lastModified",
-              "description": "date 2010-04-28",
+              "description": null,
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "ISO8601Date",
                   "ofType": null
                 }
               },
@@ -1028,7 +1074,7 @@
           "fields": [
             {
               "name": "authors",
-              "description": "array of openlibrary ref strings ['/authors/OL3964940A',...]",
+              "description": "array of openlibrary ref strings ['/works/OL10000000W',...]",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -1076,13 +1122,13 @@
             },
             {
               "name": "created",
-              "description": "datetime 2009-12-11T01:57:19.964652",
+              "description": null,
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "ISO8601DateTime",
                   "ofType": null
                 }
               },
@@ -1094,7 +1140,7 @@
             },
             {
               "name": "key",
-              "description": "openlibrary ref string /authors/OL3964940A",
+              "description": "openlibrary ref string /works/OL10000000W",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -1112,13 +1158,13 @@
             },
             {
               "name": "lastModified",
-              "description": "datetime 2009-12-11T01:57:19.964652",
+              "description": null,
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "ISO8601Date",
                   "ofType": null
                 }
               },
