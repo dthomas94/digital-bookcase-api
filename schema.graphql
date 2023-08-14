@@ -23,25 +23,13 @@ type AddWorkToBookcasePayload {
 }
 
 type Author {
-  data: AuthorData!
+  birthDate: String
   key: String!
   lastModified: ISO8601Date!
-  revision: Int!
-}
-
-type AuthorData {
-  alternateNames: [String!]
-  bio: String
-  easternOrder: Boolean
-  enumeration: String
-  key: String
   links: [AuthorDataLink!]
   name: String!
-  personalName: String
   photos: [String!]
-  sourceRecords: [String!]
-  title: String
-  uris: [String!]
+  revision: Int!
 }
 
 type AuthorDataLink {
