@@ -2,8 +2,7 @@ module Types
     class WorkType < Types::BaseObject
         field :key, String, null: false, description: "openlibrary ref string /works/OL10000000W"
         field :revision, Integer, null: false
-        field :last_modified, GraphQL::Types::ISO8601Date, null: false
-        field :data, Types::WorkDataType, null: false
+        field :title, String, null: false
 
         field :authors, [Types::AuthorType], null: false
 

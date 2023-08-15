@@ -23,18 +23,9 @@ type AddWorkToBookcasePayload {
 }
 
 type Author {
-  birthDate: String
   key: String!
-  lastModified: ISO8601Date!
-  links: [AuthorDataLink!]
+  links: [String!]
   name: String!
-  photos: [String!]
-  revision: Int!
-}
-
-type AuthorDataLink {
-  title: String
-  url: String
 }
 
 type Bookcase {
@@ -80,16 +71,6 @@ type CreateBookcasePayload {
   clientMutationId: String
 }
 
-"""
-An ISO 8601-encoded date
-"""
-scalar ISO8601Date
-
-"""
-An ISO 8601-encoded datetime
-"""
-scalar ISO8601DateTime
-
 type Mutation {
   addWorkToBookcase(
     """
@@ -133,34 +114,11 @@ type User {
 
 type Work {
   authors: [Author!]!
-  data: WorkData!
 
   """
   openlibrary ref string /works/OL10000000W
   """
   key: String!
-  lastModified: ISO8601Date!
-  revision: Int!
-}
-
-type WorkData {
-  """
-  array of openlibrary ref strings ['/works/OL10000000W',...]
-  """
-  authors: [String!]!
-
-  """
-  array of cover identifiers for openlibrary
-  """
-  covers: [Int!]
-  created: ISO8601DateTime!
-
-  """
-  openlibrary ref string /works/OL10000000W
-  """
-  key: String!
-  lastModified: ISO8601Date!
-  latestRevision: Int!
   revision: Int!
   title: String!
 }
