@@ -17,7 +17,7 @@ module Types
     
     def works(title: nil)
       if title
-        Work.where("data ->> 'title' like ?", "%#{title}%").limit(100)
+        Work.search_title("#{title}").limit(100)
       else
         Work.all.limit(100)
       end
@@ -30,7 +30,7 @@ module Types
     
     def authors(name: nil)
       if name
-        Author.where("data ->> 'name' like ?", "%#{name}%").limit(100)
+        Author.search_name("#{name}").limit(100)
       else
         Author.all.limit(100)
       end

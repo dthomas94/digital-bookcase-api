@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_13_154247) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_16_144420) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,7 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_13_154247) do
   create_table "authors", primary_key: "key", id: :text, force: :cascade do |t|
     t.text "name", null: false
     t.json "links"
-    t.index ["key"], name: "cuix_authors_key", unique: true
+    t.virtual "searchable", type: :tsvector, as: "setweight(to_tsvector('english'::regconfig, COALESCE(name, ''::text)), 'A'::\"char\")", stored: true
+    t.index ["searchable"], name: "index_authors_on_searchable", using: :gin
   end
 
   create_table "bookcases", force: :cascade do |t|
@@ -55,7 +56,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_13_154247) do
   create_table "works", primary_key: "key", id: :text, force: :cascade do |t|
     t.integer "revision"
     t.text "title", null: false
-    t.index ["key"], name: "cuix_works_key", unique: true
+    t.virtual "searchable", type: :tsvector, as: "setweight(to_tsvector('english'::regconfig, COALESCE(title, ''::text)), 'A'::\"char\")", stored: true
+    t.index ["searchable"], name: "index_works_on_searchable", using: :gin
   end
 
   add_foreign_key "bookcases", "users"
