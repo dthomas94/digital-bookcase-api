@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  default_scope { order(title: :desc) }
+  default_scope { order(title: :asc) }
 
   include PgSearch::Model
   pg_search_scope :search_title,

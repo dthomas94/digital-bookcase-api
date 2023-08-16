@@ -10,30 +10,28 @@ module Types
       context[:current_user]
     end
 
-    field :works, [Types::WorkType], null: false do
-      argument :title, String, required: false,
-      description: "A list of all works, option to filter by title"
+    field :works_connection, Types::WorkType.connection_type, null: false do
+      argument :title, String, required: false
+    end
+    def works_connection(**_args)
+      puts _args[:title]
+      if _args[:title]
+        Work.search_title("#{_args[:title]}")
+      else
+        Work.all
+      end
     end
     
-    def works(title: nil)
-      if title
-        Work.search_title("#{title}").limit(100)
+    field :authors_connection, Types::AuthorType.connection_type, null: false do
+      argument :name, String, required: false
+    end
+    def authors_connection(**_args)
+      if _args[:name]
+        Author.search_name("#{_args[:name]}")
       else
-        Work.all.limit(100)
+        Author.all
       end
     end
 
-    field :authors, [Types::AuthorType], null: false do
-      argument :name, String, required: false,
-      description: "A list of all authors, option to filter by name"
-    end
-    
-    def authors(name: nil)
-      if name
-        Author.search_name("#{name}").limit(100)
-      else
-        Author.all.limit(100)
-      end
-    end
   end
 end
