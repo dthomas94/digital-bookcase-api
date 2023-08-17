@@ -14,9 +14,9 @@ module Types
       argument :title, String, required: false
     end
     def works_connection(**_args)
-      puts _args[:title]
-      if _args[:title]
-        Work.search_title("#{_args[:title]}")
+      title = _args[:title]
+      if title && !title.empty?
+        Work.search_title("#{title}")
       else
         Work.all
       end
