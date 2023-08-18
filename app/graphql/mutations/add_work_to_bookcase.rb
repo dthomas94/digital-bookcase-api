@@ -2,7 +2,7 @@ module Mutations
   class AddWorkToBookcase < BaseMutation
     argument :work_key, String, required: true
     argument :user_id, Integer, required: true
-    # TODO: define return fields
+    
     field :bookcase, Types::BookcaseType, null: false
 
     def resolve(input)
