@@ -1,4 +1,11 @@
 class DigitalBookcaseApiSchema < GraphQL::Schema
+  use GraphqlDevise::SchemaPlugin.new(
+    query:            Types::QueryType,
+    mutation:         Types::MutationType,
+    resource_loaders: [
+      GraphqlDevise::ResourceLoader.new(User)
+    ]
+  )
   default_max_page_size 100
   default_page_size 100
   mutation(Types::MutationType)

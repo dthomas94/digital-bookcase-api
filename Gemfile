@@ -35,8 +35,8 @@ gem 'composite_primary_keys', '~> 14.0.6'
 
 # Devise
 gem "devise"
-gem "devise-jwt"
 gem "jsonapi-serializer"
+gem "graphql_devise"
 
 # GraphQL
 gem "graphql"
@@ -44,6 +44,9 @@ gem "graphql"
 group :development do
   gem "graphiql-rails"
 end
+
+# Omniauth
+gem 'omniauth', '~> 1.6', '>= 1.6.1'
 
 # Asset stuff
 gem "sprockets-rails"

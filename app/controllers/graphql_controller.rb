@@ -3,6 +3,7 @@ class GraphqlController < ApplicationController
   # This allows for outside API access while preventing CSRF attacks,
   # but you'll have to authenticate your user separately
   # protect_from_forgery with: :null_session
+  include GraphqlDevise::SetUserByToken
 
   def execute
     variables = prepare_variables(params[:variables])
@@ -11,8 +12,8 @@ class GraphqlController < ApplicationController
     context = {
       current_user: current_user,
     }
-    result = DigitalBookcaseApiSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
-    render json: result
+    result = DigitalBookcaseApiSchema.execute(query, variables: variables, context: gql_devise_context(User), operation_name: operation_name)
+    render json: result unless performed?
   rescue StandardError => e
     raise e unless Rails.env.development?
     handle_error_in_development(e)

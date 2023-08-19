@@ -10,7 +10,7 @@ module Types
       context[:current_user]
     end
 
-    field :works_connection, Types::WorkType.connection_type, null: false do
+    field :works_connection, Types::WorkType.connection_type, authenticate: false,  null: false do
       argument :title, String, required: false
     end
     def works_connection(**_args)
@@ -22,7 +22,7 @@ module Types
       end
     end
     
-    field :authors_connection, Types::AuthorType.connection_type, null: false do
+    field :authors_connection, Types::AuthorType.connection_type, authenticate: false, null: false do
       argument :name, String, required: false
     end
     def authors_connection(**_args)
