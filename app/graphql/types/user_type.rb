@@ -4,7 +4,7 @@ module Types
         field :name, String, null: false
         field :email, String, null: false
 
-        field :bookcase, Types::BookcaseType, null: false
+        field :bookcase, Types::BookcaseType, null: true
         def bookcase
             Bookcase.find_by(user_id: object[:id])
         end
