@@ -3,6 +3,7 @@ module Types
         field :key, String, null: false, description: "openlibrary ref string /works/OL10000000W"
         field :revision, Integer, null: false
         field :title, String, null: false
+        field :covers, [Integer], null: false
 
         field :authors, [Types::AuthorType], null: false
 
@@ -23,6 +24,11 @@ module Types
             end
 
             foundAuthors
+        end
+
+        field :olid, String, null: false
+        def olid
+            object["key"][7..object["key"].length]
         end
     end
 end
